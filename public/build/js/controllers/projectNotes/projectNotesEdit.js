@@ -8,7 +8,9 @@ angular.module('app.controllers')
         });
             $scope.save = function () {
             if($scope.form.$valid){
-                ProjectNotes.update({id: $scope.projectNotes.project_id, noteId: $scope.projectNotes.id},$scope.projectNotes,function(){
+                ProjectNotes.update({
+                    id: $scope.projectNotes.project_id,
+                    noteId: $scope.projectNotes.id},$scope.projectNotes,function(){
                     $location.path('/projects/' +$routeParams.id + '/notes');
                 });
             }
