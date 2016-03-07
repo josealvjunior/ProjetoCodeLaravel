@@ -61,7 +61,7 @@ class ProjectNotesController extends Controller
         }
         $result = $this->repository->findWhere(['project_id'=>$id, 'id'=>$noteId]);
         if(isset($result['data']) && count($result['data'])==1){
-            $result - [
+            $result = [
                 'data' => $result['data'][0]
             ];
         }
@@ -94,7 +94,8 @@ class ProjectNotesController extends Controller
         if($this->checkProjectsOwner($id) == false){
             return ['error'=> 'Acesso Negado'];
         }
-        $this->repository->find($noteId)->delete();
+       // $note = $this->repository->findWhere(['project_id'=> $id, 'id'=>$noteId]);
+        $this->repository->delete($noteId);
     }
 
     private function checkProjectsOwner($projectId)
