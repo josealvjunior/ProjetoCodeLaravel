@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 use project\Http\Requests;
 use project\Http\Controllers\Controller;
-use Projeto\Repositories\UserRepository;
+use project\Repositories\UserRepository;
 
 class UserController extends Controller
 {

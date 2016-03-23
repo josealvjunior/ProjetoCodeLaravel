@@ -6,7 +6,7 @@
  * Time: 11:05
  */
 
-namespace Projeto\Repositories;
+namespace project\Repositories;
 
 
 use Prettus\Repository\Eloquent\BaseRepository;

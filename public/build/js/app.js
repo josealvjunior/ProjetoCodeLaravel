@@ -1,13 +1,35 @@
 var app = angular.module('app',
-    ['ngRoute','app.controllers', 'angular-oauth2', 'app.services'
+    ['ngRoute','app.controllers', 'angular-oauth2', 'app.services','app.filters'
 ]);
 
 angular.module('app.controllers',['ngMessages','angular-oauth2']);
+angular.module('app.filters',[]);
 angular.module('app.services',['ngResource']);
 
 app.provider('appConfig', function(){
    var config = {
-       baseUrl: 'http://localhost/projeto/public'
+       baseUrl: 'http://localhost/projeto/public',
+       projects:{
+           status:[
+               {value:'1', label: 'não iniciado'},
+               {value:'2', label: 'Iniciado'},
+               {value:'3', label: 'Concluído'},
+           ]
+       },
+       utils:{
+           transformResponse: function(data, headers){
+               var headersGetter = headers();
+               if(headersGetter['content-type'] =='application/json' ||
+                   headersGetter['content-type'] == 'text/json') {
+                   var dataJson = JSON.parse(data);
+                   if(dataJson.hasOwnProperty('data')){
+                       dataJson = dataJson.data;
+                   }
+                   return dataJson;
+               }
+               return data;
+           }
+       }
    } ;
     return {
         config: config,
@@ -21,18 +43,9 @@ app.config([
     '$routeProvider','$httpProvider','OAuthProvider',
     'OAuthTokenProvider','appConfigProvider',
     function($routeProvider, $httpProvider, OAuthProvider, OAuthTokenProvider, appConfigProvider){
-        $httpProvider.defaults.transformResponse = function(data,headers){
-            var headersGetter = headers();
-            if(headersGetter['content-type'] =='application/json' ||
-                headersGetter['content-type'] == 'text/json') {
-                var dataJson = JSON.parse(data);
-                if(dataJson.hasOwnProperty('data')){
-                    dataJson = dataJson.data;
-                }
-                return dataJson;
-            }
-            return data;
-        };
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $httpProvider.defaults.transformResponse = appConfigProvider.config.utils.transformResponse;
         $routeProvider
         .when('/login', {
             templateUrl: 'build/views/login.html',
@@ -63,6 +76,28 @@ app.config([
             templateUrl: 'build/views/client/remove.html',
             controller: 'ClientRemoveController'
         })
+            /*Rotas Projects */
+            .when('/projects', {
+                templateUrl: 'build/views/projects/list.html',
+                controller: 'ProjectsListController'
+            })
+            .when('/projects/new', {
+                templateUrl: 'build/views/projects/new.html',
+                controller: 'ProjectsNewController'
+            })
+            .when('/projects/:id/show', {
+                templateUrl: 'build/views/projects/show.html',
+                controller: 'ProjectsShowController'
+            })
+            .when('/projects/:id/edit', {
+                templateUrl: 'build/views/projects/edit.html',
+                controller: 'ProjectsEditController'
+            })
+            .when('/projects/:id/remove', {
+                templateUrl: 'build/views/projects/remove.html',
+                controller: 'ProjectsRemoveController'
+            })
+
         /* Rotas de projects notes  */
         .when('/projects/:id/notes', {
             templateUrl: 'build/views/projectNotes/list.html',

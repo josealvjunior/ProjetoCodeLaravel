@@ -87,6 +87,10 @@
 		<script src="{{ asset('build/js/controllers/client/clientEdit.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/client/clientRemove.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/client/clientShow.js') }}"></script>
+		<!-- Projects !-->
+		<script src="{{ asset('build/js/controllers/projects/ProjectsList.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/projects/ProjectsNew.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/projects/ProjectsEdit.js') }}"></script>
 		<!-- Project Notes !-->
 		<script src="{{ asset('build/js/controllers/projectNotes/ProjectNotesList.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesEdit.js') }}"></script>
@@ -94,8 +98,11 @@
 		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesRemove.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesShow.js') }}"></script>
 
+		<!-- filters !-->
+		<script src="{{ asset('build/js/filters/date-br.js') }}"></script>
 		<!-- SERVICES !-->
 		<script src="{{ asset('build/js/services/client.js') }}"></script>
+		<script src="{{ asset('build/js/services/projects.js') }}"></script>
 		<script src="{{ asset('build/js/services/projectNotes.js') }}"></script>
 		<script src="{{ asset('build/js/services/user.js') }}"></script>
 
