@@ -6,7 +6,7 @@
  * Time: 11:16
  */
 
-namespace Projeto\Repositories;
+namespace project\Repositories;
 
 
 use Prettus\Repository\Contracts\RepositoryInterface;

@@ -15,11 +15,13 @@ class ProjectTransformer extends TransformerAbstract
     public function transform(Projects $projects)
     {
         return[
-            'project' => $projects->name,
+            'id' => $projects->id,
+            'name' => $projects->name,
             'description' => $projects->description,
-            'proress' => $projects->progress,
+            'progress' => $projects->progress,
             'status' => $projects->status,
             'due_date' => $projects->due_date,
+            'client' => $projects->client,
         ];
     }
 
@@ -27,4 +29,5 @@ class ProjectTransformer extends TransformerAbstract
     {
         return $this->collection($projects->members, new ProjectMemberTransformer());
     }
+
 }
