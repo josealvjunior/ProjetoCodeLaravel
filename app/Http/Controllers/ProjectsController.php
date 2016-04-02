@@ -92,7 +92,7 @@ class ProjectsController extends Controller
         if($this->checkProjectOwner($id)==false){
             return ['error'=> 'Acesso Negado'];
         }
-        $this->repository->find($id)->delete();
+        $this->repository->delete($id);
     }
 
     public function checkProjectOwner($projectId)

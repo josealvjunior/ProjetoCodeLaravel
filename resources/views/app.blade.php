@@ -91,6 +91,7 @@
 		<script src="{{ asset('build/js/controllers/projects/ProjectsList.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projects/ProjectsNew.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projects/ProjectsEdit.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/projects/projectsRemove.js') }}"></script>
 		<!-- Project Notes !-->
 		<script src="{{ asset('build/js/controllers/projectNotes/ProjectNotesList.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesEdit.js') }}"></script>
