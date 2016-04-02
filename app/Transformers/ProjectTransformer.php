@@ -22,6 +22,7 @@ class ProjectTransformer extends TransformerAbstract
             'status' => $projects->status,
             'due_date' => $projects->due_date,
             'client' => $projects->client,
+            'client_id' =>$projects->client_id,
         ];
     }
 
