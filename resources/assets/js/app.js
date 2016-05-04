@@ -1,5 +1,7 @@
 var app = angular.module('app',
-    ['ngRoute','app.controllers', 'angular-oauth2', 'app.services','app.filters'
+    ['ngRoute','app.controllers', 'angular-oauth2', 'app.services','app.filters',
+        "ui.bootstrap.typeahead","ui.bootstrap.datepicker", "ui.bootstrap.tpls","ngFileUpload"
+
 ]);
 
 angular.module('app.controllers',['ngMessages','angular-oauth2']);
@@ -15,6 +17,9 @@ app.provider('appConfig', ['$httpParamSerializerProvider', function($httpParamSe
                {value: 2, label: 'Iniciado'},
                {value: 3, label: 'Concluído'},
            ]
+       },
+       urls: {
+           projectFile: '/projects/{{id}}/file/{{idFile}}'
        },
        utils:{
            transformRequest: function(data){
@@ -83,6 +88,7 @@ app.config([
             templateUrl: 'build/views/client/remove.html',
             controller: 'ClientRemoveController'
         })
+
             /*Rotas Projects */
             .when('/projects', {
                 templateUrl: 'build/views/projects/list.html',
@@ -125,7 +131,26 @@ app.config([
         .when('/projects/:id/notes/:noteId/remove', {
             templateUrl: 'build/views/projectNotes/remove.html',
             controller: 'ProjectNotesRemoveController'
-        });
+        })
+
+        /* Rotas de projects files*/
+        .when('/projects/:id/file', {
+                templateUrl: 'build/views/projectFile/list.html',
+                controller: 'ProjectFileListController'
+            })
+        .when('/projects/:id/file/new', {
+                templateUrl: 'build/views/projectFile/new.html',
+                controller: 'ProjectFileNewController'
+            })
+        .when('/projects/:id/file/:fileId/edit', {
+                templateUrl: 'build/views/projectFile/edit.html',
+                controller: 'ProjectFileEditController'
+            })
+        .when('/projects/:id/file/:fileId/remove', {
+                templateUrl: 'build/views/projectFile/remove.html',
+                controller: 'ProjectFileRemoveController'
+            });
+
 
 
     OAuthProvider.configure({
