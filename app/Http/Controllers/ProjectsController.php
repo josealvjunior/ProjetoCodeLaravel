@@ -35,7 +35,7 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        return $this->repository->findWhere(['owner_id'=> \Authorizer::getResourceOwnerId()]);
+       return $this->repository->findWhere(['owner_id'=> \Authorizer::getResourceOwnerId()]);
     }
 
     /**
@@ -61,9 +61,6 @@ class ProjectsController extends Controller
             return ['error'=> 'Acesso Negado'];
         }
         return $this->service->read($id);
-
-
-
     }
 
     /**

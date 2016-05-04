@@ -13,15 +13,9 @@ use Illuminate\Contracts\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use project\Entities\ProjectFile;
 use project\Repositories\ProjectsRepository;
-use Illuminate\Http\Exception;
-use project\Validators\ProjectFileValidator;
 use project\Validators\ProjectsValidator;
-
-use Illuminate\Contracts\Filesystem\Factory as Storage;
-use Illuminate\Filesystem\Filesystem;
-
+use Illuminate\Http\Exception;
 
 class ProjectsService
 {
@@ -33,33 +27,18 @@ class ProjectsService
      * @var ProjectsValidator
      */
     protected $validator;
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-    /**
-     * @var Storage
-     */
-    private $storage;
-    /**
-     * @var ProjectFileValidator
-     */
-    private $projectFileValidator;
 
-    public function __construct(ProjectsRepository $repository, ProjectsValidator $validator, Filesystem $filesystem, Storage $storage, ProjectFileValidator $projectFileValidator)
+    public function __construct(ProjectsRepository $repository, ProjectsValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
-        $this->filesystem = $filesystem;
-        $this->storage = $storage;
-        $this->projectFileValidator = $projectFileValidator;
-
     }
 
     public function all()
     {
         return response()->json($this->repository->with(['owner', 'client'])->all());
     }
+
 
     public function read($id)
     {

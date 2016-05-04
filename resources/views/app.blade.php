@@ -69,11 +69,12 @@
 		<script src="{{ asset('build/js/vendor/angular-resource.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-animate.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-messages.min.js') }}"></script>
-		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/ui-bootstrap-tpls.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/query-string.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/ng-file-upload.min.js') }}"></script>
 
 		<script src="{{ asset('build/js/app.js') }}"></script>
 
@@ -92,16 +93,16 @@
 		<script src="{{ asset('build/js/controllers/projects/ProjectsNew.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projects/ProjectsEdit.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/projects/projectsRemove.js') }}"></script>
-		<!-- Project Notes !-->
-		<script src="{{ asset('build/js/controllers/projectNotes/ProjectNotesList.js') }}"></script>
-		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesEdit.js') }}"></script>
-		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesNew.js') }}"></script>
-		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesRemove.js') }}"></script>
-		<script src="{{ asset('build/js/controllers/projectNotes/projectNotesShow.js') }}"></script>
+		<!-- Project File !-->
+		<script src="{{ asset('build/js/controllers/projectFile/ProjectFileList.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/projectFile/ProjectFileNew.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/projectFile/projectFileEdit.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/projectFile/projectFileRemove.js') }}"></script>
 
 		<!-- filters !-->
 		<script src="{{ asset('build/js/filters/date-br.js') }}"></script>
 		<!-- SERVICES !-->
+		<script src="{{ asset('build/js/services/url.js') }}"></script>
 		<script src="{{ asset('build/js/services/client.js') }}"></script>
 		<script src="{{ asset('build/js/services/projects.js') }}"></script>
 		<script src="{{ asset('build/js/services/projectNotes.js') }}"></script>
